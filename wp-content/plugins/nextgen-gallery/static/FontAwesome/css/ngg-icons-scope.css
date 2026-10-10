@@ -1,12 +1,12 @@
 /*!
- * NGG Icons â private, lightbox-scoped icon font.
+ * NGG Icons — private, lightbox-scoped icon font.
  *
  * The bundled ngg-icons.min.css binds Font Awesome to the generic family
  * "Font Awesome 6 Free" on the generic .fa/.fas/.far/.fab selectors. Any other
  * Font Awesome (v4/v5/v6) loaded by the active theme or another plugin can win
  * the cascade and repoint those selectors to a family that lacks the FA6-only
  * glyphs the Pro lightbox toolbar uses (fa-circle-info, fa-cart-shopping,
- * fa-xmark, fa-share-from-square, fa-square-x-twitter) â leaving blank buttons.
+ * fa-xmark, fa-share-from-square, fa-square-x-twitter) — leaving blank buttons.
  *
  * This stylesheet declares a uniquely named face ("NGG Icons") and applies it
  * ONLY inside the Pro lightbox wrapper (#npl_wrapper), so the toolbar icons are

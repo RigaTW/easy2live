@@ -9,9 +9,9 @@
     --bg-card-hover: rgba(255, 255, 255, 0.95);
 
     --primary: #647F99;
-    /* ä½¿ç¨èæå®çä¸»é¡è² */
+    /* 使用者指定的主題色 */
     --primary-hover: #4d667d;
-    /* ç¨æç hover é¡è² */
+    /* 稍暗的 hover 顏色 */
     --secondary: #f1f5f9;
     --secondary-hover: #e2e8f0;
 
@@ -231,14 +231,14 @@ h2 {
     height: 100%;
     background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0) 100%);
     transform: skewX(-25deg);
-    /* æ¯ 4 ç§ææ ä¸æ¬¡ */
+    /* 每 4 秒掃掠一次 */
     animation: shineSweepLoop 4s linear infinite;
     z-index: 10;
 }
 
 .btn-primary:hover::after,
 .btn-gold:hover::after {
-    /* æ»é¼ æ¸åæåºå®ç¼åºä¸éè¼å¿«çåæ¾¤ */
+    /* 滑鼠懸停時固定發出一道較快的光澤 */
     animation: shineSweep 1s ease-out;
 }
 
@@ -329,7 +329,7 @@ h2 {
     font-family: 'Fredoka', 'Nunito', sans-serif;
     color: var(--text-main);
     font-weight: 500;
-    /* éä½å­é«ç²ç´°ï¼è®å®çèµ·ä¾æ´æ¸ç½åæ½¤ */
+    /* 降低字體粗細，讓它看起來更清爽圓潤 */
 }
 
 .logo-number {
@@ -340,7 +340,7 @@ h2 {
     vertical-align: middle;
     transform: translateY(-1px);
     font-weight: 600;
-    /* æ¸å­å¯ä»¥ç¨å¾®ç²ä¸é»é»ä½çºå¼·èª¿ï¼ä½ä¹ä¸è¦å° 800 */
+    /* 數字可以稍微粗一點點作為強調，但也不要到 800 */
 }
 
 .brand-logo {
@@ -523,7 +523,7 @@ h2 {
     height: 640px;
     border-radius: 28px;
     padding: 8px;
-    /* éå±¬éæ¡ååº¦ */
+    /* 金屬邊框厚度 */
     position: relative;
     background: linear-gradient(135deg, #52525b 0%, #27272a 20%, #18181b 80%, #3f3f46 100%);
     box-shadow:
@@ -552,7 +552,7 @@ h2 {
 }
 
 .phone-mockup::before {
-    /* å´éæé (Power / Volume) */
+    /* 側邊按鈕 (Power / Volume) */
     content: '';
     position: absolute;
     right: -3px;
@@ -564,7 +564,7 @@ h2 {
     box-shadow: 0 70px 0 0 #52525b;
 }
 
-/* æå­è¢å¹ */
+/* 挖孔螢幕 */
 .phone-notch {
     position: absolute;
     top: 14px;
@@ -589,7 +589,7 @@ h2 {
     border-radius: 20px;
 }
 
-/* è¢å¹ç»çååç¹æ */
+/* 螢幕玻璃反光特效 */
 .phone-screen::after {
     content: '';
     position: absolute;
@@ -615,9 +615,9 @@ h2 {
     inset: 0;
     display: none;
     mix-blend-mode: screen;
-    /* è®åæååºåèªç¶èå */
+    /* 讓光效和底圖自然融合 */
     pointer-events: none;
-    /* è®æ»é¼ äºä»¶ç©¿éå°ä¸æ¹çæªå */
+    /* 讓滑鼠事件穿透到下方的截圖 */
 }
 
 .route-line {
@@ -627,7 +627,7 @@ h2 {
     width: 32%;
     height: 38%;
     border: 5px solid rgba(59, 130, 246, 0.5);
-    /* å°èªèè² */
+    /* 導航藍色 */
     border-radius: 30px;
     border-bottom: none;
     border-left: none;
@@ -635,7 +635,7 @@ h2 {
     overflow: hidden;
 }
 
-/* è·¯ç·åææµååæ */
+/* 路線動態流動光效 */
 .route-line::before {
     content: '';
     position: absolute;
@@ -805,11 +805,11 @@ h2 {
     left: -100%;
     width: 60%;
     height: 100%;
-    /* å å¼·ååäº®åº¦èå¯¬åº¦ */
+    /* 加強反光亮度與寬度 */
     background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0) 100%);
     transform: skewX(-25deg);
     transition: all 0.6s ease-out;
-    /* å å¿«æééåº¦ */
+    /* 加快掃過速度 */
     z-index: 10;
     pointer-events: none;
 }
@@ -974,13 +974,13 @@ h2 {
 /* Showcase Z Fold 7 Cover Screen Style Images */
 .showcase-img {
     width: 50%;
-    /* å¯¬åº¦ç¨å¾®ç¸®å° */
+    /* 寬度稍微縮小 */
     max-width: 260px;
-    /* éå¶æå¤§å¯¬åº¦ä»¥é«ç¾ä¿®é·æ¯ä¾ */
+    /* 限制最大寬度以體現修長比例 */
     border-radius: 12px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
     border: 8px solid #27272a;
-    /* éå±¬éæ¡ç¨å¾®æ¹ç´°ä¸é»é» */
+    /* 金屬邊框稍微改細一點點 */
     transition: transform 0.3s ease;
     background: #18181b;
 }
@@ -1088,7 +1088,7 @@ h2 {
     max-width: 400px;
     height: 240px;
     border-radius: 24px;
-    /* æå¡å¡æ¹çºéè²æ¼¸å±¤åºè²èæ·±è²æå­ */
+    /* 會員卡改為金色漸層底色與深色文字 */
     background: linear-gradient(135deg, #fbbf24, #f59e0b, #d97706);
     border: 1px solid rgba(255, 255, 255, 0.3);
     padding: 30px;
@@ -1117,14 +1117,14 @@ h2 {
 }
 
 .card-logo {
-    /* èé é¦é å°¾ä¸è´çå­é«èç²ç´°è¨­å® */
+    /* 與頁首頁尾一致的字體與粗細設定 */
     font-family: 'Fredoka', 'Nunito', sans-serif;
     font-size: 1.5rem;
     font-weight: 600;
     color: #1e293b;
-    /* æ·±ç°è² */
+    /* 深灰色 */
     letter-spacing: -0.05em;
-    /* æ¶æå­è·ä»¥éåå¾®èå­é« */
+    /* 收攏字距以配合微胖字體 */
 }
 
 .card-logo .highlight-num {
@@ -1136,7 +1136,7 @@ h2 {
     width: 48px;
     height: 38px;
     border-radius: 6px;
-    /* éå±¬åæ¾¤æ¼¸å±¤åºè² */
+    /* 金屬光澤漸層底色 */
     background: linear-gradient(-135deg, #d4af37 0%, #ffd700 20%, #b8860b 50%, #fadb5f 80%, #daa520 100%);
     position: relative;
     overflow: hidden;
@@ -1144,21 +1144,21 @@ h2 {
     border: 1px solid rgba(0, 0, 0, 0.3);
 }
 
-/* æ¶çä¸çå»ç·ç´è·¯ */
+/* 晶片上的刻線紋路 */
 .card-chip::before {
     content: '';
     position: absolute;
     inset: 4px;
-    /* çåºå¤æ¡éç·£ */
+    /* 留出外框邊緣 */
     border: 1px solid rgba(0, 0, 0, 0.3);
     border-radius: 4px;
-    /* å©ç¨éè¤çç·æ§æ¼¸å±¤ç«åºåå²ç· */
+    /* 利用重複的線性漸層畫出分割線 */
     background:
         linear-gradient(90deg, transparent 48%, rgba(0, 0, 0, 0.3) 49%, transparent 51%),
         linear-gradient(0deg, transparent 20%, rgba(0, 0, 0, 0.3) 21%, transparent 22%, transparent 78%, rgba(0, 0, 0, 0.3) 79%, transparent 80%);
 }
 
-/* ä¸­éçæææ©¢åå»ç´ */
+/* 中間的感應橢圓刻紋 */
 .card-chip::after {
     content: '';
     position: absolute;
@@ -1169,7 +1169,7 @@ h2 {
     height: 12px;
     border: 1px solid rgba(0, 0, 0, 0.3);
     border-radius: 10px;
-    /* è¥ä¸¸å½¢ç */
+    /* 藥丸形狀 */
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), transparent);
 }
 
@@ -1178,9 +1178,9 @@ h2 {
     font-family: monospace;
     letter-spacing: 4px;
     color: #1f2937;
-    /* æ·±ç°è²æ¸å­ */
+    /* 深灰色數字 */
     text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
-    /* å¾®å¾®çç½åºé°å½±å¢å éå»ç«é«æ */
+    /* 微微的白底陰影增加雕刻立體感 */
 }
 
 .card-details {
@@ -1192,7 +1192,7 @@ h2 {
 .card-name {
     font-size: 0.875rem;
     color: #374151;
-    /* ä¸­æ·±ç°è² */
+    /* 中深灰色 */
     text-transform: uppercase;
     letter-spacing: 2px;
     font-weight: 600;
@@ -1202,7 +1202,7 @@ h2 {
     font-size: 1.25rem;
     font-weight: 700;
     color: #ffffff;
-    /* ç½è²ï¼å¨éåºä¸å¾äº®ç¼ */
+    /* 白色，在金底上很亮眼 */
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
@@ -1406,7 +1406,7 @@ footer {
 
     .showcase-grid {
         gap: 80px;
-        /* å¢å æ¯ååè½åå¡ä¹éçéè· */
+        /* 增加每個功能區塊之間的間距 */
     }
 
     .showcase-item {
@@ -1415,7 +1415,7 @@ footer {
         text-align: center;
     }
 
-    /* å¨ææ©çç¢ºä¿é½æ¯ãååçå¾æå­ãçä¸è´æ§ */
+    /* 在手機版確保都是「先圖片後文字」的一致性 */
     .showcase-item.reverse {
         flex-direction: column-reverse;
     }
@@ -1532,11 +1532,11 @@ footer {
         width: 100%;
     }
 
-    /* éå°ææ©ç¸®å° Hero ææ©æ¡ï¼ç¶­æ 1080:2520 æ¯ä¾ */
+    /* 針對手機縮小 Hero 手機框，維持 1080:2520 比例 */
     .phone-mockup {
         width: 250px;
         height: 528px;
-        /* 250 * 2.11 (åºæ¼è¢å¹æ¯ä¾èª¿æ´å¾çæ´é«æ¯ä¾) */
+        /* 250 * 2.11 (基於螢幕比例調整後的整體比例) */
         border-radius: 20px;
         padding: 6px;
     }
@@ -1581,7 +1581,7 @@ footer {
         height: 620px;
     }
 
-    /* è®ææ©ç Header ä¸çä¸è¼æéç¸®å°æåªæåç¤ºï¼é¿åæ ç Logo æ·è¡ */
+    /* 讓手機版 Header 上的下載按鈕縮小成只有圖示，避免擠爆 Logo 斷行 */
     .nav-cta {
         width: 40px;
         height: 40px;
@@ -1803,23 +1803,23 @@ footer {
 ========================================= */
 ::-webkit-scrollbar {
     width: 8px;
-    /* ç´°ç·»çæ²åè»¸å¯¬åº¦ */
+    /* 細緻的捲動軸寬度 */
 }
 
 ::-webkit-scrollbar-track {
     background: #0f172a;
-    /* æ·±èé»è²è»é */
+    /* 深藍黑色軌道 */
 }
 
 ::-webkit-scrollbar-thumb {
     background: #334155;
-    /* é è¨­æ·±è²æ³æ */
+    /* 預設深色扳手 */
     border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
     background: #475569;
-    /* hover æç¨å¾®è½äº® */
+    /* hover 時稍微轉亮 */
 }
 
 /* =========================================
