@@ -150,7 +150,7 @@ def head(title, desc, path, extra=''):
 <script>try{{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}}catch(e){{}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&family=Noto+Sans+TC:wght@400;700;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&display=swap">
 <link rel="stylesheet" href="/assets/css/site.css?v={CSS_V}">
 {extra}</head>
 <body>
@@ -172,11 +172,10 @@ def header(current=''):
   <nav aria-label="主選單">
     <a class="hide-sm" href="/#apps">App</a>
     <a class="hide-sm" href="/design/"{cur('design')}>空間設計</a>
-    <a class="hide-sm" href="/photography/"{cur('photo')}>影像紀錄</a>
     <a class="hide-sm" href="/#contact">聯絡</a>
     {THEME_BTN}
     <details class="menu"><summary class="icon-btn" aria-label="開啟選單"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></summary>
-      <div class="panel">{app_links}<a href="/design/">空間設計</a><a href="/photography/">影像紀錄</a><a href="/#contact">聯絡</a></div>
+      <div class="panel">{app_links}<a href="/design/">空間設計</a><a href="/#contact">聯絡</a></div>
     </details>
   </nav>
 </div></header>
@@ -189,7 +188,7 @@ def footer():
   <div><a class="logo" href="/">easy<span class="two">2</span>live</a><p>台灣的獨立 App 工作室<br>© 2026 easy2live</p></div>
   <div><h2>App</h2>{apps}</div>
   <div><h2>隱私權政策</h2>{priv}</div>
-  <div><h2>其他</h2><a href="/design/">空間設計</a><a href="/photography/">影像紀錄</a><a href="mailto:{EMAIL}">{EMAIL}</a></div>
+  <div><h2>其他</h2><a href="/design/">空間設計</a><a href="mailto:{EMAIL}">{EMAIL}</a></div>
 </footer></div>
 <script src="/assets/js/site.js?v={JS_V}" defer></script>
 </body>
@@ -240,11 +239,10 @@ def build_home():
   <div class="shot">{shots}</div>
 </article>''')
     design_cover = MANIFEST['design'][13]['thumb']  # 客廳
-    photo_cover = MANIFEST['photo'][7]['thumb']     # 書櫃前
     ld = json.dumps({"@context": "https://schema.org", "@type": "Organization", "name": "easy2live", "url": SITE,
                      "logo": SITE + "/apple-touch-icon.png", "email": EMAIL}, ensure_ascii=False)
     page = head('easy2live｜把生活的小麻煩，做成好用的 App',
-                'easy2live 是台灣的獨立 App 工作室：Easy2Baby 輕鬆寶貝、車伴 Easy2Ride、Easy2Delivery，以及空間設計與影像作品。',
+                'easy2live 是台灣的獨立 App 工作室：Easy2Baby 輕鬆寶貝、車伴 Easy2Ride、Easy2Delivery，以及空間設計作品。',
                 '/', f'<script type="application/ld+json">{ld}</script>\n')
     page += header() + f'''<main id="main">
 <div class="wrap">
@@ -266,9 +264,8 @@ def build_home():
       <h2>做 App 的人，<br>本業是室內設計。</h2>
       <p>easy2live 的開發者也是一位設計師爸爸。對空間與生活細節的在意，同樣放進每一個 App 的介面裡。</p>
     </div>
-    <div class="works">
-      <a class="work" href="/design/"><img src="{design_cover}" alt="室內設計作品" width="720" height="540" loading="lazy"><div><b>空間設計</b><span>{len(MANIFEST["design"])} 張室內設計作品</span></div></a>
-      <a class="work" href="/photography/"><img src="{photo_cover}" alt="影像紀錄" width="720" height="540" loading="lazy"><div><b>影像紀錄</b><span>生活裡的光影與片刻</span></div></a>
+    <div class="works one">
+      <a class="work" href="/design/"><img src="{design_cover}" alt="室內設計作品" width="720" height="405" loading="lazy"><div><b>空間設計</b><span>{len(MANIFEST["design"])} 張室內設計作品</span></div></a>
     </div>
   </section>
 
@@ -444,7 +441,6 @@ if __name__ == '__main__':
         build_app(k)
     build_delivery_docs()
     build_gallery('design')
-    build_gallery('photo')
     build_404()
     build_meta()
     print('done')
