@@ -28,8 +28,9 @@ APPS = {
     ticks=['單手記下餵食、睡眠、換尿布', '身高體重生長曲線、餵藥鬧鐘', '一人訂閱，全家共享相簿'],
     stores=[('apple', '在 App Store 下載', 'App Store', 'https://apps.apple.com/tw/app/easy2baby/id6760773878'),
             ('play', '在 Google Play 下載', 'Google Play', 'https://play.google.com/store/apps/details?id=com.easy2live.easy2baby')],
-    shots=[('/assets/img/apps/easy2baby-1.webp', '今日入口：相簿、年齡、飲食尿布睡眠健康'),
-           ('/assets/img/apps/easy2baby-2.webp', '家人與寶寶資料')],
+    # 截圖：(檔案, 說明, 手機框)。雙平台的 App 放一支 iPhone、一支 Android
+    shots=[('/assets/img/apps/easy2baby-1.webp', '今日入口：相簿、年齡、飲食尿布睡眠健康', 'ios'),
+           ('/assets/img/apps/easy2baby-2-android.webp', '家人與寶寶資料', 'android')],
     feat=[('bottle', '餵食追蹤', '親餵左右時長、瓶餵奶量、副食品。'),
           ('moon', '生活作息', '睡眠區間、換尿布，看一整天的節奏。'),
           ('clock', '強制鬧鐘', '下一餐或餵藥間隔，時間到就推播。'),
@@ -55,7 +56,7 @@ APPS = {
     desc='機車保養提醒、騎乘紀錄，找車友揪團、組車隊。給每一位騎士的愛車與路上夥伴。',
     ticks=['保養紀錄、證件到期提醒、油耗花費', '騎乘路線與里程，騎完做成重播影片', '揪團、車隊聊天室、集合點天氣'],
     stores=[('apple', '即將上架', 'App Store', ''), ('play', '即將上架', 'Google Play', '')],
-    shots=[],
+    shots=[], placeholder=['ios', 'android'],  # 雙平台，還沒有截圖
     feat=[('wrench', '照顧愛車', '保養紀錄、證件到期提醒、油耗與花費、記停車位置。'),
           ('route', '記錄每一趟', '路線、里程、爬升，騎完做成重播影片。'),
           ('people', '一起騎', '揪團、車隊聊天室、集合點天氣，活動當天看誰到了。'),
@@ -74,12 +75,12 @@ APPS = {
     desc='給外送員、快遞司機與物流士的路徑規劃工具。截圖就能辨識地址，多點路線自動排好，再一鍵交給 Google Maps 或導航王。',
     ticks=['截圖自動辨識地址，多筆一次加入', '多點路徑自動排序，也能手動拖曳', '一鍵跳 Google Maps 或導航王'],
     stores=[('play', '在 Google Play 下載', 'Google Play', 'https://play.google.com/store/apps/details?id=com.rigataiwan.easy2delivery')],
-    shots=[('/assets/img/apps/easy2delivery-hero.webp', '路線地圖'),
-           ('/assets/img/apps/easy2delivery-list.webp', '路徑清單'),
-           ('/assets/img/apps/easy2delivery-scan.webp', '拍照辨識地址'),
-           ('/assets/img/apps/easy2delivery-nav.webp', '切換導航工具'),
-           ('/assets/img/apps/easy2delivery-delivery.webp', '訂單介面'),
-           ('/assets/img/apps/easy2delivery-station.webp', '安插加油站與換電站')],
+    shots=[('/assets/img/apps/easy2delivery-hero.webp', '路線地圖', 'android'),
+           ('/assets/img/apps/easy2delivery-list.webp', '路徑清單', 'android'),
+           ('/assets/img/apps/easy2delivery-scan.webp', '拍照辨識地址', 'android'),
+           ('/assets/img/apps/easy2delivery-nav.webp', '切換導航工具', 'android'),
+           ('/assets/img/apps/easy2delivery-delivery.webp', '訂單介面', 'android'),
+           ('/assets/img/apps/easy2delivery-station.webp', '安插加油站與換電站', 'android')],
     feat=[('camera', '截圖辨識地址', '截下 Lalamove、Uber Eats、foodpanda 等訂單畫面，自動抓出地址，可預覽、可修改。'),
           ('route', '多點路徑最佳化', '5 單或 50 單都自動排出最順的跑法，也能手動拖曳調整順序。'),
           ('list', '先取後送', '同一筆訂單一定先取件再送件，多單重疊時也不會排錯。'),
@@ -202,13 +203,19 @@ def store_buttons(a):
         out.append(f'<a class="store" href="{url}" rel="noopener">{inner}</a>' if url else f'<span class="store soon">{inner}</span>')
     return ''.join(out)
 
-def phone(src, alt, cls='', lazy=True):
+def phone(src, alt, platform, cls='', lazy=True):
     load = ' loading="lazy"' if lazy else ''
-    return f'<div class="phone {cls}"><div class="screen"><img src="{src}" alt="{e(alt)}" width="360" height="780"{load}></div></div>'
+    return f'<div class="phone {platform} {cls}"><div class="screen"><img src="{src}" alt="{e(alt)}" width="600" height="1300"{load}></div></div>'
 
-def placeholder_phone(a, cls=''):
+def placeholder_phone(a, platform, cls=''):
     # 還沒有截圖的 App：用圖示代替，不放假畫面
-    return f'<div class="phone placeholder {cls}"><div class="screen" style="background:var(--ride)"><div><img src="{a["icon"]}" alt="" width="96" height="96" style="margin:0 auto 14px"><div style="font-weight:700">{e(a["name"])}</div><div style="font-size:13px;opacity:.8">即將上架</div></div></div></div>'
+    return f'<div class="phone placeholder {platform} {cls}"><div class="screen" style="background:var(--ride)"><div><img src="{a["icon"]}" alt="" width="96" height="96"><div style="font-weight:700">{e(a["name"])}</div><div style="opacity:.8">即將上架</div></div></div></div>'
+
+def phones(a, n=2, lazy=True):
+    """App 的前 n 張截圖；沒有截圖就用圖示佔位（依平台各一支）。"""
+    if a['shots']:
+        return ''.join(phone(s, f'{a["name"]} 畫面：{c}', pf, lazy=lazy) for s, c, pf in a['shots'][:n])
+    return ''.join(placeholder_phone(a, pf) for pf in a.get('placeholder', ['ios'])[:n])
 
 def write(path, content):
     full = os.path.join(ROOT, path)
@@ -219,14 +226,14 @@ def write(path, content):
 # ---------- 首頁 ----------
 def build_home():
     b, r, d = APPS['baby'], APPS['ride'], APPS['deli']
-    stage = (placeholder_phone(r, 's1') +
-             phone(b['shots'][0][0], 'Easy2Baby 畫面', 's2', lazy=False) +
-             phone(d['shots'][0][0], 'Easy2Delivery 畫面', 's3', lazy=False))
+    stage = (placeholder_phone(r, 'android', 's1') +
+             phone(b['shots'][0][0], 'Easy2Baby 畫面', b['shots'][0][2], 's2', lazy=False) +
+             phone(d['shots'][0][0], 'Easy2Delivery 畫面', d['shots'][0][2], 's3', lazy=False))
     trust = ''.join(f'<a href="/{APPS[k]["slug"]}/"><i class="dot" style="--c:var(--{ {"baby":"baby","ride":"ride","deli":"deli"}[k]})"></i>{e(APPS[k]["en"] if k=="baby" else APPS[k]["name"])}　{ "iOS 與 Android 已上架" if k=="baby" else ("即將上架" if k=="ride" else "Android 已上架")}</a>' for k in ORDER)
     products = []
     for i, k in enumerate(ORDER):
         a = APPS[k]
-        shots = ''.join(phone(s, f'{a["name"]} 畫面：{c}') for s, c in a['shots'][:2]) or placeholder_phone(a)
+        shots = phones(a)
         ticks = ''.join(f'<li>{e(t)}</li>' for t in a['ticks'])
         products.append(f'''<article class="product {a["theme"]}{" flip" if i == 1 else ""}">
   <div class="info">
@@ -285,12 +292,12 @@ def build_home():
 def build_app(k):
     a = APPS[k]
     shots = a['shots']
-    hero_shots = ''.join(phone(s, f'{a["name"]} 畫面：{c}', lazy=False) for s, c in shots[:2]) or placeholder_phone(a)
+    hero_shots = phones(a, lazy=False)
     feat = ''.join(f'<div><svg viewBox="0 0 36 36" aria-hidden="true">{ICONS[i]}</svg><h3>{e(t)}</h3><p>{e(d)}</p></div>' for i, t, d in a['feat'])
     four = ' four' if len(a['feat']) == 4 else ''
     screens = ''
     if len(shots) > 2:
-        figs = ''.join(f'<figure>{phone(s, a["name"] + " 畫面：" + c)}<figcaption>{e(c)}</figcaption></figure>' for s, c in shots)
+        figs = ''.join(f'<figure>{phone(s, a["name"] + " 畫面：" + c, pf)}<figcaption>{e(c)}</figcaption></figure>' for s, c, pf in shots)
         screens = f'<div class="sec-title"><h2>介面</h2></div><div class="screens">{figs}</div>'
     plan = ''
     if a['plan']:
