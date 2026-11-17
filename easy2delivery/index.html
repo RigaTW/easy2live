@@ -1,326 +1,81 @@
-<!DOCTYPE html>
-
-<html lang="zh-TW">
+<!doctype html>
+<html lang="zh-Hant">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-
-<title>Easy2Delivery | 專為台灣外送員打造的路徑規劃神器</title>
-<meta content="為台灣外送員與貨運物流打造的嚴謹配送路徑優化系統。透過首創的「先取後送」演算法，為您省下無謂的油耗與時間。" name="description"/>
-<meta content="外送, 導航, 路徑規劃, 物流, 先取後送, Gogoro, 加油站, Easy2Delivery" name="keywords"/>
-<meta content="Easy2live.net" name="author"/>
-
-<link href="/easy2delivery/logo.png" rel="icon" type="image/png"/>
-<link href="/easy2delivery/logo.png" rel="apple-touch-icon"/>
-
-<meta content="Easy2Delivery | 您的專屬送件導航神器" property="og:title"/>
-<meta content="突破單純導航！專為機車外送與貨車物流設計的多點路徑規劃演算法，讓您跑單更順暢、少繞路。" property="og:description"/>
-<meta content="website" property="og:type"/>
-<meta content="/" property="og:url"/>
-<meta content="screenshot-hero.png" property="og:image"/> 
-<meta content="Easy2Delivery" property="og:site_name"/>
-
-<meta content="summary_large_image" name="twitter:card"/>
-<meta content="Easy2Delivery | 送件導航神器" name="twitter:title"/>
-<meta content="專屬機車外送與貨車物流的多點路徑規劃演算法。" name="twitter:description"/>
-<meta content="screenshot-hero.png" name="twitter:image"/>
-
-<link href="/easy2delivery/style-5e1f15b6.css" rel="stylesheet"/>
-
-<link href="/_ext/fonts.googleapis.com/css2-e608e405.css" rel="stylesheet"/>
-
-<link href="/_ext/cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Easy2Delivery｜外送與貨運的配送路線規劃</title>
+<meta name="description" content="Easy2Delivery：為台灣外送員與貨運打造的路線規劃。先取後送演算法、拍照辨識地址、一鍵切換 Google Maps 或導航王。Android 封閉測試中。">
+<link rel="canonical" href="https://easy2live.net/easy2delivery/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="easy2live">
+<meta property="og:title" content="Easy2Delivery｜外送與貨運的配送路線規劃">
+<meta property="og:description" content="Easy2Delivery：為台灣外送員與貨運打造的路線規劃。先取後送演算法、拍照辨識地址、一鍵切換 Google Maps 或導航王。Android 封閉測試中。">
+<meta property="og:url" content="https://easy2live.net/easy2delivery/">
+<meta property="og:image" content="https://easy2live.net/assets/img/og.png">
+<meta property="og:locale" content="zh_TW">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0D1320" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.png" type="image/png" sizes="64x64">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&family=Noto+Sans+TC:wght@400;700;900&display=swap">
+<link rel="stylesheet" href="/assets/css/site.css?v=cf62eb23">
 </head>
 <body>
-
-<nav class="navbar glass-effect" id="navbar">
-<div class="container nav-container">
-<a class="logo" href="/easy2delivery/">
-<img alt="Easy2Delivery Logo" class="brand-logo" src="/easy2delivery/logo.png"/>
-<span class="logo-text">Easy<span class="logo-number">2</span>Delivery</span>
-</a>
-<ul class="nav-links">
-<li><a href="/easy2delivery/#features">核心亮點</a></li>
-<li><a href="/easy2delivery/#showcase">介面展示</a></li>
-<li><a href="/easy2delivery/#pro">訂閱會員</a></li>
-<li><a href="/" rel="noopener" target="_blank">Easy2Live <i class="fas fa-external-link-alt" style="font-size: 0.8em; margin-left: 2px;"></i></a></li>
-</ul>
-<button aria-label="Toggle Menu" class="mobile-menu-btn" id="mobile-menu-btn">
-<i class="fas fa-bars"></i>
+<a class="skip" href="#main">跳到主要內容</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<symbol id="i-apple" viewBox="0 0 24 24"><path d="M16.4 12.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8 1.6 0 2 .8 3.4.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9-.1 0-2.7-1-2.7-4.1zM13.9 5c.7-.9 1.2-2 1-3.2-1 0-2.3.7-3 1.6-.7.8-1.2 2-1.1 3.1 1.2.1 2.3-.6 3.1-1.5z"/></symbol>
+<symbol id="i-play" viewBox="0 0 24 24"><path d="M3.6 2.2c-.3.3-.4.7-.4 1.2v17.2c0 .5.1.9.4 1.2l9.6-9.8-9.6-9.8zm10.7 10.9 2.8 2.9-11.5 6.6 8.7-9.5zm0-2.2L5.6 1.4l11.5 6.6-2.8 2.9zm3.9 4.4 2.9-1.7c.8-.5.8-1.6 0-2.1l-2.9-1.7-3.1 3.2 3.1 2.3z"/></symbol>
+</svg>
+<header class="site"><div class="wrap">
+  <a class="logo" href="/" aria-label="easy2live 首頁">easy<span class="two">2</span>live</a>
+  <nav aria-label="主選單">
+    <a class="hide-sm" href="/#apps">App</a>
+    <a class="hide-sm" href="/design/">空間設計</a>
+    <a class="hide-sm" href="/photography/">影像紀錄</a>
+    <a class="hide-sm" href="/#contact">聯絡</a>
+    <button class="icon-btn" type="button" data-theme-toggle aria-label="切換深色或淺色模式">
+<svg class="theme-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>
+<svg class="theme-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
 </button>
-<a class="btn btn-primary nav-cta" href="/easy2delivery/#download">立即下載</a>
-</div>
-</nav>
-
-<section class="hero" id="home">
-<div class="container hero-container">
-<div class="hero-content">
-<div class="badge fade-in-up" style="animation-delay: 0.1s;">
-<i class="fas fa-bolt"></i> 全新物流導航體驗
-                </div>
-<h1 class="hero-title fade-in-up" style="animation-delay: 0.2s;">
-                    配送不繞路<br/>
-<span class="gradient-text">準時不辛苦</span>
-</h1>
-<p class="hero-subtitle fade-in-up" style="animation-delay: 0.3s;">
-                    為台灣外送員與貨運物流打造的嚴謹配送路徑優化系統。透過首創的「先取後送」演算法，為您省下無謂的油耗與時間。
-                </p>
-<div class="hero-actions fade-in-up" style="animation-delay: 0.4s;">
-<a class="btn btn-primary btn-lg" href="/easy2delivery/#pro">
-<i class="fas fa-rocket"></i> 即將上架，敬請期待
-                    </a>
-</div>
-<div class="trust-indicators fade-in-up" style="animation-delay: 0.5s;">
-<div class="avatars">
-
-<img alt="User" src="/_ext/i.pravatar.cc/100-ed13b721"/>
-<img alt="User" src="/_ext/i.pravatar.cc/100-32eed65f"/>
-<img alt="User" src="/_ext/i.pravatar.cc/100-72346ee7"/>
-</div>
-<span>超過 <strong>10,000+</strong> 騎士搶先預約</span>
-</div>
-</div>
-<div class="hero-visual">
-<div class="phone-mockup">
-<div class="phone-notch"></div>
-<div class="phone-screen">
-
-<img alt="NaviPro App Interface" class="app-screenshot" id="hero-img" src="/easy2delivery/screenshot-hero.png"/>
-
-<div class="app-map">
-<div class="route-line"></div>
-<div class="node node-start"></div>
-<div class="node node-stop">
-<div class="pulsar"></div>
-</div>
-<div class="node node-end"></div>
-<div class="station-icon"><i class="fas fa-gas-pump"></i></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-
-<section class="features" id="features">
-<div class="bg-glow bg-glow-1" style="top: 20%; left: -10%;"></div>
-<div class="bg-glow bg-glow-2" style="bottom: -10%; right: -5%;"></div>
-<div class="container relative-z">
-<div class="section-header">
-<h2>核心技術與優勢</h2>
-<p>結合台灣在地化實務需求，提供最符合送件情境的高效工具。</p>
-</div>
-<div class="bento-grid">
-
-<div class="feature-card bento-card card-span-2 bg-primary-soft">
-<div class="feature-content">
-<div class="feature-icon">
-<i class="fas fa-brain"></i>
-</div>
-<h3>嚴謹演算法：先取後送</h3>
-<p>確保外送訂單中「取件後才能送件」的嚴格邏輯。系統強制要求同筆訂單的取件優先，並在多單重疊時算出最順路徑，過濾邏輯錯誤，大幅提升效率與油耗。</p>
-</div>
-</div>
-
-<div class="feature-card bento-card card-span-1 bg-cyan-soft">
-<div class="feature-content">
-<div class="feature-icon">
-<i class="fas fa-motorcycle"></i>
-</div>
-<h3>機車與貨運雙棲</h3>
-<p>機車專屬窄巷優化；貨車迴避禁行與小巷，各自動態計算最佳路徑。</p>
-</div>
-</div>
-
-<div class="feature-card bento-card card-span-1 bg-purple-soft">
-<div class="feature-content">
-<div class="feature-icon">
-<i class="fas fa-camera-retro"></i>
-</div>
-<h3>智慧辨識，解放雙手</h3>
-<p>領先業界的 OCR 引擎，拍照或截圖即可提取地址建單。</p>
-</div>
-</div>
-
-<div class="feature-card bento-card card-span-2 bg-gradient-soft">
-<div class="feature-content">
-<div class="feature-icon">
-<i class="fas fa-exchange-alt"></i>
-</div>
-<h3>自由切換導航工具</h3>
-<p>提供極致直覺的介面，不強迫改變使用習慣。支援一鍵無縫串聯 Google Maps 或 導航王 TM。</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-
-<section class="showcase" id="showcase">
-<div class="bg-glow bg-glow-3" style="top: 40%; left: 50%; opacity: 0.05;"></div>
-<div class="container relative-z">
-<div class="section-header">
-<h2>強大的實戰功能展示</h2>
-<p>專為效率而生，從取件到送達，每個環節都為您精心設計。</p>
-</div>
-<div class="showcase-grid">
-
-<div class="showcase-item">
-<div class="showcase-img-container">
-<img alt="OCR 掃碼建單" class="showcase-img" src="/easy2delivery/screenshot-scan.png"/>
-</div>
-<div class="showcase-text">
-<h3><i class="fas fa-camera retro-icon"></i> 智能辨識與批次匯入</h3>
-<p>支援鏡頭直接掃描包裹地址或 QR Code，更提供文字批次貼上功能。系統會自動辨識並幫您將多筆取件/送件地址一次加入路線清單。</p>
-</div>
-</div>
-
-<div class="showcase-item reverse">
-<div class="showcase-text">
-<h3><i class="fas fa-map-marked-alt retro-icon"></i> 彈性路線與無縫導航整合</h3>
-<p>清楚瀏覽包含多達數十個停靠點的「路徑清單」。提供外送、貨運等多樣模式與配送方式，隨時拖曳排序、一鍵清空或重新規劃。導航時，更可自由選擇跳轉至 Google
-                            Maps（單站/全路徑）或導航王 TM，給您最大的操作自由。</p>
-</div>
-<div class="showcase-img-container double-img">
-<img alt="路徑清單" class="showcase-img front" src="/easy2delivery/screenshot-list.png"/>
-<img alt="導航模式切換" class="showcase-img back" src="/easy2delivery/screenshot-nav.png"/>
-</div>
-</div>
-
-<div class="showcase-item">
-<div class="showcase-img-container">
-<img alt="外送/貨運專屬模式" class="showcase-img" src="/easy2delivery/screenshot-delivery.png"/>
-</div>
-<div class="showcase-text">
-<h3><i class="fas fa-motorcycle retro-icon"></i> 專為實戰打造的訂單介面</h3>
-<p>專為騎士設計，清晰顯示取件人、代收金額、運單號碼。結合台灣窄巷與大馬路的情境化考量，讓您輕鬆掌握每日收益與送件歷程，每張單都萬無一失。</p>
-</div>
-</div>
-
-<div class="showcase-item reverse">
-<div class="showcase-text">
-<h3><i class="fas fa-charging-station retro-icon"></i> 確保電力無虞：即時安插能源站</h3>
-<p>機車或貨車快沒油/沒電了？隨時呼叫「搜尋加油站 / Gogoro 換電站」選單，系統會自動考量目前的導航路線，為您安插最佳停靠站，徹底告別續航焦慮。</p>
-</div>
-<div class="showcase-img-container">
-<img alt="加入能源站點" class="showcase-img" src="/easy2delivery/screenshot-station.png"/>
-</div>
-</div>
-</div>
-</div>
-</section>
-
-<section class="pro-section" id="pro">
-<div class="container">
-<div class="pro-container glass-card">
-<div class="pro-content">
-<h2 class="gradient-text">尊榮訂閱服務</h2>
-<p>解鎖進階功能，包含無限制路線規劃、專屬訂閱會員外觀，以及優先客服支援，開啟極致體驗。</p>
-<ul class="pro-benefits">
-<li><i class="fas fa-check-circle"></i> 無上限多點導航</li>
-<li><i class="fas fa-check-circle"></i> 專屬黃金漸層會員卡</li>
-<li><i class="fas fa-check-circle"></i> 進階收益分析與熱點預測</li>
-</ul>
-<a class="btn btn-gold" href="/easy2delivery/#subscribe">立即升級</a>
-</div>
-<div class="pro-card-visual">
-<div class="membership-card">
-<div class="card-logo">Easy<span class="highlight-num">2</span>Delivery</div>
-<div class="card-chip"></div>
-<div class="card-number">**** **** **** 8888</div>
-<div class="card-details">
-<span class="card-name">PRO MEMBER</span>
-<span class="card-tier">訂閱會員</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-
-<section class="faq-section" id="faq">
-<div class="container">
-<div class="section-header text-center">
-<h2>常見問題</h2>
-<p>有任何疑問嗎？看看這裡有沒有您需要的解答。</p>
-</div>
-<div class="faq-accordion">
-
-<div class="faq-item">
-<button class="faq-question">
-<span>支援哪些導航軟體？</span>
-<i class="fas fa-chevron-down"></i>
-</button>
-<div class="faq-answer">
-<p>我們目前深度整合 <strong>Google Maps</strong> 以及 <strong>導航王 TM</strong>。您可以隨時在 APP
-                            內一鍵切換，針對不同路況偏好選擇最適合您的導航引擎。</p>
-</div>
-</div>
-
-<div class="faq-item">
-<button class="faq-question">
-<span>雙系統（iOS/Android）都可以用嗎？</span>
-<i class="fas fa-chevron-down"></i>
-</button>
-<div class="faq-answer">
-<p>Easy2Delivery 目前已推出 Android 版本。開發團隊正積極針對介面與效能優化，iOS 版本預計將於後續開放，敬請期待最新消息！</p>
-</div>
-</div>
-
-<div class="faq-item">
-<button class="faq-question">
-<span>付費訂閱和免費版的差別在哪裡？</span>
-<i class="fas fa-chevron-down"></i>
-</button>
-<div class="faq-answer">
-<p>免費版提供基礎的路徑規劃與無縫導航功能。升級為「高級訂閱服務」後，您將解鎖「無上限多點路徑規劃」、歷史紀錄與設定的雲端備份，以及專屬的訂閱會員外觀。</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-
-<section class="cta-section" id="download">
-<div class="bg-glow bg-glow-3"></div>
-<div class="container text-center relative-z">
-<h2>準備好提升你的外送效率了嗎？</h2>
-<p>即刻加入卓越外送物流的行列，體驗前所未有的優質路徑規劃。</p>
-<div class="hero-actions justify-center">
-<a class="btn btn-primary btn-large" href="/easy2delivery/#download">
-<i class="fab fa-google-play"></i> Google Play 免費下載
-                </a>
-</div>
-</div>
-</section>
-
-<footer class="footer">
-<div class="container footer-container">
-<div class="footer-brand">
-<div class="logo">
-<img alt="Easy2Delivery Logo" class="brand-logo" src="/easy2delivery/logo.png"/>
-<span class="logo-text">Easy<span class="logo-number">2</span>Delivery</span>
-</div>
-<div class="slogan-row">
-<p>生活不該只有趕路，更該有輕鬆生活的溫度。</p>
-<div class="legal-links">
-<a href="/easy2delivery/privacy.html">隱私權政策 (Privacy Policy)</a>
-<a href="/easy2delivery/feedback.html">意見回饋 (Feedback)</a>
-</div>
-</div>
-</div>
-<div class="footer-bottom">
-<div class="footer-text">
-<p>© 2026 Easy2live.net | Easy2Delivery | Design DAD Project. Version: v1.0.20260216-beta.</p>
-</div>
-<div class="social-links">
-<a href="/easy2delivery/"><i class="fab fa-facebook"></i></a>
-<a href="/easy2delivery/"><i class="fab fa-twitter"></i></a>
-<a href="/easy2delivery/"><i class="fab fa-instagram"></i></a>
-</div>
-</div>
-</div>
-</footer>
-
-<script src="/easy2delivery/content-7b3059fe.js"></script>
-<script src="/easy2delivery/script-7b3059fe.js"></script>
+    <details class="menu"><summary class="icon-btn" aria-label="開啟選單"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></summary>
+      <div class="panel"><a href="/easy2baby/">輕鬆寶貝</a><a href="/easy2ride/">車伴</a><a href="/easy2delivery/" aria-current="page">Easy2Delivery</a><a href="/design/">空間設計</a><a href="/photography/">影像紀錄</a><a href="/#contact">聯絡</a></div>
+    </details>
+  </nav>
+</div></header>
+<main id="main" class="t-deli">
+<section class="ap-hero"><div class="wrap">
+  <div class="info">
+    <div class="big-ic"><img src="/assets/img/apps/easy2delivery-icon.webp" alt="Easy2Delivery 圖示" width="96" height="96"></div>
+    <h1>Easy2Delivery<small>外送路線規劃</small></h1>
+    <span class="status">Android 封閉測試中 <span class="bar"><i style="width:85%"></i></span> 85%</span>
+    <p class="lead">配送不繞路，準時不辛苦。</p>
+    <p class="desc">為台灣外送員與貨運物流打造的配送路徑規劃。「先取後送」演算法幫你省下繞路的油耗與時間。</p>
+    <div class="stores"><span class="store soon"><svg aria-hidden="true"><use href="#i-play"/></svg><span><small>封閉測試中</small>Google Play</span></span></div>
+  </div>
+  <div class="shot"><div class="phone "><div class="screen"><img src="/assets/img/apps/easy2delivery-hero.webp" alt="Easy2Delivery 畫面：路線地圖" width="360" height="780"></div></div><div class="phone "><div class="screen"><img src="/assets/img/apps/easy2delivery-list.webp" alt="Easy2Delivery 畫面：路徑清單" width="360" height="780"></div></div></div>
+</div></section>
+<div class="wrap">
+  <section class="feat"><div><svg viewBox="0 0 36 36" aria-hidden="true"><path d="M6 28c6-2 4-10 12-12s6-8 12-10"/><circle cx="6" cy="28" r="2.5"/><circle cx="30" cy="6" r="2.5"/></svg><h3>先取後送</h3><p>同一筆訂單一定先取件再送件，多單重疊時算出最順的路徑。</p></div><div><svg viewBox="0 0 36 36" aria-hidden="true"><path d="M3 9h18v15H3zM21 14h6l5 5v5H21z"/><circle cx="9" cy="27" r="3"/><circle cx="26" cy="27" r="3"/></svg><h3>機車與貨車雙模式</h3><p>機車走窄巷更順，貨車避開禁行路段與小巷。</p></div><div><svg viewBox="0 0 36 36" aria-hidden="true"><rect x="5" y="10" width="26" height="18" rx="3"/><path d="M13 10l2-4h6l2 4"/><circle cx="18" cy="19" r="5"/></svg><h3>拍照建單</h3><p>拍包裹、掃 QR Code 或貼上文字，自動辨識多筆地址。</p></div><div><svg viewBox="0 0 36 36" aria-hidden="true"><path d="M18 4l10 26-10-6-10 6z"/></svg><h3>自由切換導航</h3><p>一鍵跳到 Google Maps 或導航王，不用改習慣。</p></div><div><svg viewBox="0 0 36 36" aria-hidden="true"><rect x="7" y="5" width="22" height="27" rx="3"/><path d="M12 13h12M12 19h12M12 25h7"/></svg><h3>實戰訂單介面</h3><p>取件人、代收金額、運單號碼一目了然，掌握每日收益。</p></div><div><svg viewBox="0 0 36 36" aria-hidden="true"><path d="M20 4L9 20h8l-2 12 12-17h-8z"/></svg><h3>安插能源站</h3><p>快沒油沒電時，沿路幫你插入加油站或 Gogoro 換電站。</p></div></section>
+  <div class="sec-title"><h2>介面</h2></div><div class="screens"><figure><div class="phone "><div class="screen"><img src="/assets/img/apps/easy2delivery-hero.webp" alt="Easy2Delivery 畫面：路線地圖" width="360" height="780" loading="lazy"></div></div><figcaption>路線地圖</figcaption></figure><figure><div class="phone "><div class="screen"><img src="/assets/img/apps/easy2delivery-list.webp" alt="Easy2Delivery 畫面：路徑清單" width="360" height="780" loading="lazy"></div></div><figcaption>路徑清單</figcaption></figure><figure><div class="phone "><div class="screen"><img src="/assets/img/apps/easy2delivery-scan.webp" alt="Easy2Delivery 畫面：拍照辨識地址" width="360" height="780" loading="lazy"></div></div><figcaption>拍照辨識地址</figcaption></figure><figure><div class="phone "><div class="screen"><img src="/assets/img/apps/easy2delivery-nav.webp" alt="Easy2Delivery 畫面：切換導航工具" width="360" height="780" loading="lazy"></div></div><figcaption>切換導航工具</figcaption></figure><figure><div class="phone "><div class="screen"><img src="/assets/img/apps/easy2delivery-delivery.webp" alt="Easy2Delivery 畫面：訂單介面" width="360" height="780" loading="lazy"></div></div><figcaption>訂單介面</figcaption></figure><figure><div class="phone "><div class="screen"><img src="/assets/img/apps/easy2delivery-station.webp" alt="Easy2Delivery 畫面：安插加油站與換電站" width="360" height="780" loading="lazy"></div></div><figcaption>安插加油站與換電站</figcaption></figure></div>
+  <section class="plan" style="margin-top:72px"><div><h2>免費版就能規劃路線</h2><p>免費版提供基礎的路徑規劃與導航串接。訂閱後解鎖進階功能。</p></div><ul class="ticks"><li>無上限多點路徑規劃</li><li>歷史紀錄與設定雲端備份</li><li>進階收益分析</li><li>專屬會員外觀</li></ul></section>
+  <div class="sec-title" id="faq"><h2>常見問題</h2></div><div class="faq"><details><summary>支援哪些導航軟體？</summary><p>目前整合 Google Maps 與導航王，可以在 App 內一鍵切換。</p></details><details><summary>iOS 和 Android 都可以用嗎？</summary><p>目前先推出 Android 版本，正在封閉測試中。iOS 版本會在之後開放。</p></details><details><summary>付費訂閱和免費版差在哪？</summary><p>免費版提供基礎的路徑規劃與導航串接。訂閱後解鎖無上限多點路徑規劃、歷史紀錄與設定的雲端備份，以及專屬會員外觀。</p></details></div>
+  <div class="sec-title"><h2>支援與隱私</h2></div>
+  <section class="help"><a href="/easy2delivery/feedback.html"><b>意見回饋</b><span>easy2live.net/easy2delivery/feedback</span></a><a href="/easy2delivery/privacy.html"><b>隱私權政策</b><span>easy2live.net/easy2delivery/privacy</span></a><a href="mailto:service@easy2live.net"><b>寫信給我們</b><span>service@easy2live.net</span></a></section>
+  <div class="sec-title" style="padding-top:56px"><h2>其他 App</h2></div>
+  <div class="others"><a href="/easy2baby/"><img src="/assets/img/apps/easy2baby-icon.webp" alt="" width="56" height="56" loading="lazy"><div><b>輕鬆寶貝</b><span>把每一天，收進成長相簿。</span></div></a><a href="/easy2ride/"><img src="/assets/img/apps/easy2ride-icon.webp" alt="" width="56" height="56" loading="lazy"><div><b>車伴</b><span>找車友、一起騎，安心上路。</span></div></a></div>
+</div>
+</main>
+<div class="wrap"><footer class="site">
+  <div><a class="logo" href="/">easy<span class="two">2</span>live</a><p>台灣的獨立 App 工作室<br>© 2026 easy2live</p></div>
+  <div><h2>App</h2><a href="/easy2baby/">Easy2Baby 輕鬆寶貝</a><a href="/easy2ride/">車伴 Easy2Ride</a><a href="/easy2delivery/">Easy2Delivery</a></div>
+  <div><h2>隱私權政策</h2><a href="https://rigatw.github.io/easy2baby-legal/">Easy2Baby</a><a href="https://easy2ride.web.app/privacy">車伴</a><a href="/easy2delivery/privacy.html">Easy2Delivery</a></div>
+  <div><h2>其他</h2><a href="/design/">空間設計</a><a href="/photography/">影像紀錄</a><a href="mailto:service@easy2live.net">service@easy2live.net</a></div>
+</footer></div>
+<script src="/assets/js/site.js?v=3f8623be" defer></script>
 </body>
 </html>
