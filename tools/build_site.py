@@ -68,36 +68,36 @@ APPS = {
     page_title='車伴 Easy2Ride｜機車保養提醒、騎乘紀錄與揪團車隊',
     page_desc='車伴 Easy2Ride：機車保養與證件到期提醒、騎乘路線紀錄與重播影片、找車友揪團與車隊聊天室。即將在 App Store 與 Google Play 上架。'),
   'deli': dict(
-    slug='easy2delivery', name='Easy2Delivery', en='外送路線規劃', theme='t-deli',
+    slug='easy2delivery', name='Easy2Delivery', en='易送　外送路徑規劃助手', theme='t-deli',
     icon='/assets/img/apps/easy2delivery-icon.webp',
-    status='Android 封閉測試中 <span class="bar"><i style="width:85%"></i></span> 85%', lead='配送不繞路，準時不辛苦。',
-    desc='為台灣外送員與貨運物流打造的配送路徑規劃。「先取後送」演算法幫你省下繞路的油耗與時間。',
-    ticks=['先取後送，多點自動排出最順路線', '拍照或截圖，自動辨識地址建單', '一鍵跳 Google Maps 或導航王'],
-    stores=[('play', '封閉測試中', 'Google Play', '')],
+    status='● Android 已上架', lead='配送不繞路，準時不辛苦。',
+    desc='給外送員、快遞司機與物流士的路徑規劃工具。截圖就能辨識地址，多點路線自動排好，再一鍵交給 Google Maps 或導航王。',
+    ticks=['截圖自動辨識地址，多筆一次加入', '多點路徑自動排序，也能手動拖曳', '一鍵跳 Google Maps 或導航王'],
+    stores=[('play', '在 Google Play 下載', 'Google Play', 'https://play.google.com/store/apps/details?id=com.rigataiwan.easy2delivery')],
     shots=[('/assets/img/apps/easy2delivery-hero.webp', '路線地圖'),
            ('/assets/img/apps/easy2delivery-list.webp', '路徑清單'),
            ('/assets/img/apps/easy2delivery-scan.webp', '拍照辨識地址'),
            ('/assets/img/apps/easy2delivery-nav.webp', '切換導航工具'),
            ('/assets/img/apps/easy2delivery-delivery.webp', '訂單介面'),
            ('/assets/img/apps/easy2delivery-station.webp', '安插加油站與換電站')],
-    feat=[('route', '先取後送', '同一筆訂單一定先取件再送件，多單重疊時算出最順的路徑。'),
-          ('truck', '機車與貨車雙模式', '機車走窄巷更順，貨車避開禁行路段與小巷。'),
-          ('camera', '拍照建單', '拍包裹、掃 QR Code 或貼上文字，自動辨識多筆地址。'),
-          ('nav', '自由切換導航', '一鍵跳到 Google Maps 或導航王，不用改習慣。'),
-          ('list', '實戰訂單介面', '取件人、代收金額、運單號碼一目了然，掌握每日收益。'),
-          ('bolt', '安插能源站', '快沒油沒電時，沿路幫你插入加油站或 Gogoro 換電站。')],
-    plan=dict(title='免費版就能規劃路線',
-              text='免費版提供基礎的路徑規劃與導航串接。訂閱後解鎖進階功能。',
-              ticks=['無上限多點路徑規劃', '歷史紀錄與設定雲端備份', '進階收益分析', '專屬會員外觀']),
-    faq=[('支援哪些導航軟體？', '目前整合 Google Maps 與導航王，可以在 App 內一鍵切換。'),
-         ('iOS 和 Android 都可以用嗎？', '目前先推出 Android 版本，正在封閉測試中。iOS 版本會在之後開放。'),
-         ('付費訂閱和免費版差在哪？', '免費版提供基礎的路徑規劃與導航串接。訂閱後解鎖無上限多點路徑規劃、歷史紀錄與設定的雲端備份，以及專屬會員外觀。')],
+    feat=[('camera', '截圖辨識地址', '截下 Lalamove、Uber Eats、foodpanda 等訂單畫面，自動抓出地址，可預覽、可修改。'),
+          ('route', '多點路徑最佳化', '5 單或 50 單都自動排出最順的跑法，也能手動拖曳調整順序。'),
+          ('list', '先取後送', '同一筆訂單一定先取件再送件，多單重疊時也不會排錯。'),
+          ('nav', '一鍵導航', '點路徑清單裡的地址，直接開 Google Maps 或導航王，不用複製貼上。'),
+          ('bolt', '安插能源站', '快沒油沒電時，沿路幫你插入加油站或 Gogoro 換電站。'),
+          ('people', '雲端同步', '用 Google、Facebook 或 Email 登入，資料跟著帳號走。')],
+    plan=dict(title='免費下載，需要再升級',
+              text='基本的地址辨識、路徑規劃與導航串接免費使用。訂閱後解鎖更多進階功能，實際方案以 App 內顯示為準。',
+              ticks=['更多路徑與站點數', '無廣告體驗']),
+    faq=[('支援哪些導航軟體？', '支援 Google Maps 與導航王 TM 版（需另外安裝），可以在 App 內一鍵切換。'),
+         ('iOS 和 Android 都可以用嗎？', '目前提供 Android 版，可在 Google Play 下載。'),
+         ('付費訂閱和免費版差在哪？', '免費版就能辨識地址、規劃路線並開啟導航。訂閱後支援更多路徑與站點數，並且沒有廣告。實際方案以 App 內顯示為準。')],
     help=[('意見回饋', 'easy2live.net/easy2delivery/feedback', '/easy2delivery/feedback.html'),
           ('隱私權政策', 'easy2live.net/easy2delivery/privacy', '/easy2delivery/privacy.html'),
           ('寫信給我們', EMAIL, 'mailto:' + EMAIL)],
     privacy='/easy2delivery/privacy.html',
-    page_title='Easy2Delivery｜外送與貨運的配送路線規劃',
-    page_desc='Easy2Delivery：為台灣外送員與貨運打造的路線規劃。先取後送演算法、拍照辨識地址、一鍵切換 Google Maps 或導航王。Android 封閉測試中。'),
+    page_title='Easy2Delivery 易送｜外送路徑規劃助手',
+    page_desc='Easy2Delivery 易送：給外送員、快遞與物流司機的路徑規劃工具。截圖自動辨識地址、多點路徑最佳化、一鍵開啟 Google Maps 或導航王。Android 版已在 Google Play 上架。'),
 }
 ORDER = ['baby', 'ride', 'deli']
 
@@ -222,7 +222,7 @@ def build_home():
     stage = (placeholder_phone(r, 's1') +
              phone(b['shots'][0][0], 'Easy2Baby 畫面', 's2', lazy=False) +
              phone(d['shots'][0][0], 'Easy2Delivery 畫面', 's3', lazy=False))
-    trust = ''.join(f'<a href="/{APPS[k]["slug"]}/"><i class="dot" style="--c:var(--{ {"baby":"baby","ride":"ride","deli":"deli"}[k]})"></i>{e(APPS[k]["en"] if k=="baby" else APPS[k]["name"])}　{ "iOS 與 Android 已上架" if k=="baby" else ("即將上架" if k=="ride" else "Android 封閉測試中")}</a>' for k in ORDER)
+    trust = ''.join(f'<a href="/{APPS[k]["slug"]}/"><i class="dot" style="--c:var(--{ {"baby":"baby","ride":"ride","deli":"deli"}[k]})"></i>{e(APPS[k]["en"] if k=="baby" else APPS[k]["name"])}　{ "iOS 與 Android 已上架" if k=="baby" else ("即將上架" if k=="ride" else "Android 已上架")}</a>' for k in ORDER)
     products = []
     for i, k in enumerate(ORDER):
         a = APPS[k]
