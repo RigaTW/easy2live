@@ -30,17 +30,26 @@ APPS = {
             ('play', '在 Google Play 下載', 'Google Play', 'https://play.google.com/store/apps/details?id=com.easy2live.easy2baby')],
     # 截圖：(檔案, 說明, 手機框)。雙平台的 App 放一支 iPhone、一支 Android
     shots=[('/assets/img/apps/easy2baby-1.webp', '今日入口：相簿、年齡、飲食尿布睡眠健康', 'ios'),
-           ('/assets/img/apps/easy2baby-2-android.webp', '家人與寶寶資料', 'android')],
-    feat=[('bottle', '餵食追蹤', '親餵左右時長、瓶餵奶量、副食品。'),
+           ('/assets/img/apps/easy2baby-timeline.webp', '時光軸：依月齡排好，還有那年今天', 'android'),
+           ('/assets/img/apps/easy2baby-growth.webp', '成長頁：每個第一次、與上次相比', 'android'),
+           ('/assets/img/apps/easy2baby-log.webp', '照顧紀錄：今天餵奶、尿布、睡眠', 'android'),
+           ('/assets/img/apps/easy2baby-chart.webp', 'WHO 成長曲線與百分位', 'android')],
+    # 影片：(影片, 封面, 標題, 說明, 有聲音)
+    videos=[('/assets/video/easy2baby-demo.mp4', '/assets/video/easy2baby-demo.webp', '實際操作看看', '時光軸、每月一鍵回顧、餵奶尿布紀錄、WHO 成長曲線，在手機上實際操作一遍。', False),
+            ('/assets/video/easy2baby-promo.mp4', '/assets/video/easy2baby-promo.webp', '30 秒認識輕鬆寶貝', '照片依月齡排好、每個第一次、選好角色用一組碼邀請家人加入。', True)],
+    feat=[('photo', '成長時光軸', '照片依月齡自動排好，每個月一鍵回顧，還有那年今天。'),
+          ('star', '每個第一次', '第一次翻身、獨坐、叫爸媽，配上照片特別收好。'),
+          ('bottle', '餵食追蹤', '親餵左右時長、瓶餵奶量、副食品。'),
           ('moon', '生活作息', '睡眠區間、換尿布，看一整天的節奏。'),
           ('clock', '強制鬧鐘', '下一餐或餵藥間隔，時間到就推播。'),
           ('chart', '生長曲線', '身高、體重、頭圍。紀錄不能代替醫師。'),
-          ('photo', '月曆相簿', '以月曆看每天的照片，並排成成長時間軸。'),
-          ('people', '家庭共享', '多寶寶、跨裝置，用邀請一起記。')],
+          ('film', '回顧影片', '把一個月的照片做成配樂短片，存到相簿或分享。'),
+          ('people', '全家共享', '選好家人、照顧者或親友的角色，一組邀請碼就加入。')],
     plan=dict(title='免費開始，一人訂閱全家共享',
               text='基礎紀錄與相簿免費使用，家人人數不限。升級 Pro 或 Premium 後，爸媽、阿公阿嬤、保母一起用。實際方案以 App 內顯示為準。',
               ticks=['最大 200 GB 雲端空間、最長 3 分鐘 1080p 影片', '回顧影片匯出、AI 智慧相簿、足跡地圖、那年今天', '自訂浮水印', 'Premium 可免費試用 7 天']),
     faq=[('免費版和 Pro、Premium 差在哪？', '照顧紀錄、生長曲線、相簿與家人共享都能免費使用。升級後一人訂閱全家共享，解鎖更大空間、更長更清晰的影片、回顧影片、AI 相簿與浮水印；Premium 可免費試用 7 天。以 App 內顯示為準。'),
+         ('家人怎麼加入？', '在家人頁選好角色（家人、照顧者、親友），App 會產生一組邀請碼，對方輸入就加入，一起看照片、一起記。'),
          ('生長曲線、體溫、疫苗提醒是醫療建議嗎？', '不是。這些是照顧者自己留下的紀錄與提醒，不能取代醫師。'),
          ('iOS 和 Android 都有嗎？', '都有。本頁上方的兩個按鈕就是 App Store 與 Google Play 的下載連結。')],
     help=[('常見問題', '方案、醫療提醒、支援平台', '#faq'),
@@ -56,12 +65,25 @@ APPS = {
     desc='機車保養提醒、騎乘紀錄，找車友揪團、組車隊。給每一位騎士的愛車與路上夥伴。',
     ticks=['保養紀錄、證件到期提醒、油耗花費', '騎乘路線與里程，騎完做成重播影片', '揪團、車隊聊天室、集合點天氣'],
     stores=[('apple', '即將上架', 'App Store', ''), ('play', '即將上架', 'Google Play', '')],
-    shots=[], placeholder=['ios', 'android'],  # 雙平台，還沒有截圖
-    feat=[('wrench', '照顧愛車', '保養紀錄、證件到期提醒、油耗與花費、記停車位置。'),
-          ('route', '記錄每一趟', '路線、里程、爬升，騎完做成重播影片。'),
-          ('people', '一起騎', '揪團、車隊聊天室、集合點天氣，活動當天看誰到了。'),
-          ('shield', '安心上路', '手機驗證、公開揪團不開放一對一私訊，可檢舉與封鎖。')],
-    plan=None, faq=[],
+    shots=[('/assets/img/apps/easy2ride-garage.webp', '車庫：下次換機油還剩多少、其他保養項目', 'android'),
+           ('/assets/img/apps/easy2ride-detail.webp', '旅程：路線依速度上色、爬升、停等與照片', 'android'),
+           ('/assets/img/apps/easy2ride-ride.webp', '騎乘：一鍵開始，自動記錄路線與速度', 'android'),
+           ('/assets/img/apps/easy2ride-service.webp', '服務：緊急電話、找附近機車行與加油站', 'android'),
+           ('/assets/img/apps/easy2ride-crew.webp', '車友：建立車隊、依類型找揪團', 'android')],
+    videos=[('/assets/video/easy2ride-replay.mp4', '/assets/video/easy2ride-replay.webp', '旅程重播', '騎完一鍵做成短片：衛星影像加 3D 地形空中跟拍，路線依速度上色，經過拍照點會停下來看照片。這段是士林沿仰德大道上陽明山的示範路線。', False)],
+    feat=[('wrench', '保養紀錄', '機油、輪胎、煞車，換過什麼、花多少一目了然。'),
+          ('clock', '到期提醒', '驗車、保險、駕照、行照到期前通知你。'),
+          ('bolt', '油耗與花費', '加油自動算油耗，每個月花多少看得到。'),
+          ('camera', '記停車', '拍下柱子編號，地下室收不到定位也記得住樓層。'),
+          ('route', '騎乘紀錄', '路線、里程、時間、爬升，途中隨手拍照。'),
+          ('film', '旅程重播', '3D 地形空中跟拍，路線依速度上色，做成短片分享。'),
+          ('people', '揪團與車隊', '集合點、路線、節奏一次說清楚，出發那小時的天氣也幫你看。'),
+          ('shield', '安心上路', '手機驗證、公開揪團至少 3 人、不開放一對一，可檢舉與封鎖。')],
+    plan=None,
+    faq=[('不登入也能用嗎？', '可以。不登入時資料都只在你的手機上。登入後，車輛、保養、加油紀錄會自動備份到只有你讀得到的雲端，換手機登入就回來；騎乘路線一直留在手機上。'),
+         ('揪團會不會遇到陌生人私訊？', '不會。公開揪團至少 3 人、不開放一對一私訊，報名者都經過手機驗證；聯絡方式只給同團的人看，也可以檢舉與封鎖。'),
+         ('有計時或排名嗎？', '沒有。車伴不做計時排名，也不鼓勵競速，車隊只有每月里程榜。'),
+         ('什麼時候可以下載？', '即將在 App Store 與 Google Play 上架，上架後本頁的按鈕會換成下載連結。')],
     help=[('支援與常見問題', 'easy2ride.web.app/support', 'https://easy2ride.web.app/support'),
           ('隱私權政策', 'easy2ride.web.app/privacy', 'https://easy2ride.web.app/privacy'),
           ('寫信給我們', EMAIL, 'mailto:' + EMAIL)],
@@ -116,6 +138,8 @@ ICONS = {
   'bolt': '<path d="M20 4L9 20h8l-2 12 12-17h-8z"/>',
   'wrench': '<path d="M22 6a7 7 0 0 0-6 9L6 25a3 3 0 0 0 4 4l10-10a7 7 0 0 0 9-6l-4 1-3-3 1-4z"/>',
   'truck': '<path d="M3 9h18v15H3zM21 14h6l5 5v5H21z"/><circle cx="9" cy="27" r="3"/><circle cx="26" cy="27" r="3"/>',
+  'star': '<path d="M18 5l4 8.5 9 1.2-6.6 6.2 1.7 9.1L18 25.6 9.9 30l1.7-9.1L5 14.7l9-1.2z"/>',
+  'film': '<rect x="5" y="8" width="26" height="20" rx="4"/><path d="M15 13.5v9l7.5-4.5z"/>',
   'list': '<rect x="7" y="5" width="22" height="27" rx="3"/><path d="M12 13h12M12 19h12M12 25h7"/>',
 }
 
@@ -226,7 +250,7 @@ def write(path, content):
 # ---------- 首頁 ----------
 def build_home():
     b, r, d = APPS['baby'], APPS['ride'], APPS['deli']
-    stage = (placeholder_phone(r, 'android', 's1') +
+    stage = (phone(r['shots'][0][0], '車伴 畫面', r['shots'][0][2], 's1', lazy=False) +
              phone(b['shots'][0][0], 'Easy2Baby 畫面', b['shots'][0][2], 's2', lazy=False) +
              phone(d['shots'][0][0], 'Easy2Delivery 畫面', d['shots'][0][2], 's3', lazy=False))
     trust = ''.join(f'<a href="/{APPS[k]["slug"]}/"><i class="dot" style="--c:var(--{ {"baby":"baby","ride":"ride","deli":"deli"}[k]})"></i>{e(APPS[k]["en"] if k=="baby" else APPS[k]["name"])}　{ "iOS 與 Android 已上架" if k=="baby" else ("即將上架" if k=="ride" else "Android 已上架")}</a>' for k in ORDER)
@@ -294,7 +318,11 @@ def build_app(k):
     shots = a['shots']
     hero_shots = phones(a, lazy=False)
     feat = ''.join(f'<div><svg viewBox="0 0 36 36" aria-hidden="true">{ICONS[i]}</svg><h3>{e(t)}</h3><p>{e(d)}</p></div>' for i, t, d in a['feat'])
-    four = ' four' if len(a['feat']) == 4 else ''
+    four = ' four' if len(a['feat']) % 4 == 0 else ''
+    videos = ''
+    if a.get('videos'):
+        cards = ''.join(f'''<figure class="vid"><video src="{src}" poster="{poster}" controls playsinline preload="none"{'' if sound else ' muted'} width="720" height="1280"></video><figcaption><b>{e(t)}</b><span>{e(d)}</span></figcaption></figure>''' for src, poster, t, d, sound in a['videos'])
+        videos = f'<div class="sec-title"><h2>看它怎麼用</h2></div><div class="videos{' one' if len(a['videos']) == 1 else ''}">{cards}</div>'
     screens = ''
     if len(shots) > 2:
         figs = ''.join(f'<figure>{phone(s, a["name"] + " 畫面：" + c, pf)}<figcaption>{e(c)}</figcaption></figure>' for s, c, pf in shots)
@@ -324,6 +352,7 @@ def build_app(k):
 </div></section>
 <div class="wrap">
   <section class="feat{four}">{feat}</section>
+  {videos}
   {screens}
   {plan}
   {faq}
