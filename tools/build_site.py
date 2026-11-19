@@ -61,10 +61,10 @@ APPS = {
   'ride': dict(
     slug='easy2ride', name='車伴', en='Easy2Ride', theme='t-ride',
     icon='/assets/img/apps/easy2ride-icon.webp',
-    status='● 即將上架', lead='找車友、一起騎，安心上路。',
+    status='● 封閉測試中', lead='找車友、一起騎，安心上路。',
     desc='機車保養提醒、騎乘紀錄，找車友揪團、組車隊。給每一位騎士的愛車與路上夥伴。',
     ticks=['保養紀錄、證件到期提醒、油耗花費', '騎乘路線與里程，騎完做成重播影片', '揪團、車隊聊天室、集合點天氣'],
-    stores=[('apple', '即將上架', 'App Store', ''), ('play', '即將上架', 'Google Play', '')],
+    stores=[('apple', 'iPhone 封閉測試', 'TestFlight', '/easy2ride/beta/'), ('play', 'Android 封閉測試', 'Google Play', '/easy2ride/beta/')],
     shots=[('/assets/img/apps/easy2ride-garage.webp', '車庫：下次換機油還剩多少、其他保養項目', 'android'),
            ('/assets/img/apps/easy2ride-detail.webp', '旅程：路線依速度上色、爬升、停等與照片', 'android'),
            ('/assets/img/apps/easy2ride-ride.webp', '騎乘：一鍵開始，自動記錄路線與速度', 'android'),
@@ -83,7 +83,7 @@ APPS = {
     faq=[('不登入也能用嗎？', '可以。不登入時資料都只在你的手機上。登入後，車輛、保養、加油紀錄會自動備份到只有你讀得到的雲端，換手機登入就回來；騎乘路線一直留在手機上。'),
          ('揪團會不會遇到陌生人私訊？', '不會。公開揪團至少 3 人、不開放一對一私訊，報名者都經過手機驗證；聯絡方式只給同團的人看，也可以檢舉與封鎖。'),
          ('有計時或排名嗎？', '沒有。車伴不做計時排名，也不鼓勵競速，車隊只有每月里程榜。'),
-         ('什麼時候可以下載？', '即將在 App Store 與 Google Play 上架，上架後本頁的按鈕會換成下載連結。')],
+         ('什麼時候可以下載？', '現在正在封閉測試，iPhone 和 Android 都可以先加入，點本頁上方的 TestFlight 或 Google Play 按鈕就會看到加入步驟。正式上架後，本頁的按鈕會換成商店下載連結。')],
     help=[('支援與常見問題', 'easy2ride.web.app/support', 'https://easy2ride.web.app/support'),
           ('隱私權政策', 'easy2ride.web.app/privacy', 'https://easy2ride.web.app/privacy'),
           ('寫信給我們', EMAIL, 'mailto:' + EMAIL)],
@@ -253,7 +253,7 @@ def build_home():
     stage = (phone(r['shots'][0][0], '車伴 畫面', r['shots'][0][2], 's1', lazy=False) +
              phone(b['shots'][0][0], 'Easy2Baby 畫面', b['shots'][0][2], 's2', lazy=False) +
              phone(d['shots'][0][0], 'Easy2Delivery 畫面', d['shots'][0][2], 's3', lazy=False))
-    trust = ''.join(f'<a href="/{APPS[k]["slug"]}/"><i class="dot" style="--c:var(--{ {"baby":"baby","ride":"ride","deli":"deli"}[k]})"></i>{e(APPS[k]["en"] if k=="baby" else APPS[k]["name"])}　{ "iOS 與 Android 已上架" if k=="baby" else ("即將上架" if k=="ride" else "Android 已上架")}</a>' for k in ORDER)
+    trust = ''.join(f'<a href="/{APPS[k]["slug"]}/"><i class="dot" style="--c:var(--{ {"baby":"baby","ride":"ride","deli":"deli"}[k]})"></i>{e(APPS[k]["en"] if k=="baby" else APPS[k]["name"])}　{ "iOS 與 Android 已上架" if k=="baby" else ("封閉測試中" if k=="ride" else "Android 已上架")}</a>' for k in ORDER)
     products = []
     for i, k in enumerate(ORDER):
         a = APPS[k]
@@ -455,6 +455,114 @@ def build_gallery(kind):
 ''' + footer()
     write(path.strip('/') + '/index.html', page)
 
+# ---------- 車伴封閉測試招募頁 ----------
+# 連結還沒拿到就留空，頁面會顯示「審查通過後開放」
+BETA = dict(
+    testflight='https://testflight.apple.com/join/gu1pxYQd',   # TestFlight 公開邀請連結（https://testflight.apple.com/join/…）
+    group='https://groups.google.com/g/e2l-testers',        # Google 群組（Play 封閉測試名單）
+    optin='https://play.google.com/apps/testing/com.easy2.easy2ride',
+    play='https://play.google.com/store/apps/details?id=com.easy2.easy2ride',
+)
+
+def build_beta():
+    a = APPS['ride']
+
+    def go(url, label, primary=True):
+        cls = 'btn primary' if primary else 'btn ghost'
+        if not url:
+            return f'<span class="{cls} wait" aria-disabled="true">審查通過後開放</span>'
+        return f'<a class="{cls}" href="{url}" target="_blank" rel="noopener">{label}<svg aria-hidden="true" viewBox="0 0 16 16"><path d="M5 11 11 5M6 5h5v5"/></svg></a>'
+
+    def steps(items):
+        return ''.join(f'''<li><span class="mile" aria-hidden="true">{i}</span><div><h3>{t}</h3><p>{d}</p>{btn}</div></li>''' for i, (t, d, btn) in enumerate(items, 1))
+
+    ios = steps([
+        ('安裝 TestFlight', 'TestFlight 是 Apple 官方的測試版 App 商店，從 App Store 免費下載。', go('https://apps.apple.com/tw/app/testflight/id899247664', '到 App Store 下載 TestFlight', False)),
+        ('打開車伴的邀請連結', '在 iPhone 上點下面的連結，TestFlight 會跳出車伴，按「接受」。', go(BETA['testflight'], '打開邀請連結')),
+        ('安裝車伴，出門騎一趟', '按「安裝」就好。之後有新版本，TestFlight 會通知你更新。', ''),
+    ])
+    android = steps([
+        ('加入測試群組', '在 Google 群組頁面按「加入群組」（群組信箱 e2l-testers@googlegroups.com）。群組不會寄信給你，成員名單也不公開。', go(BETA['group'], '加入測試群組')),
+        ('在 Google Play 成為測試人員', '用同一個 Google 帳號打開，按「成為測試人員」。剛加入群組的話，可能要等幾分鐘才會生效。', go(BETA['optin'], '成為測試人員')),
+        ('從 Google Play 安裝車伴', '一樣用同一個帳號安裝，之後會跟一般 App 一樣自動更新。', go(BETA['play'], '到 Google Play 安裝', False)),
+    ])
+
+    desc = '車伴正在封閉測試，邀請騎車的朋友先試用：保養與加油紀錄、證件到期提醒、記停車、騎乘紀錄與旅程重播、揪團與車隊。'
+    page = head('加入車伴封閉測試｜easy2live', desc, '/easy2ride/beta/',
+                f'<link rel="stylesheet" href="/assets/css/beta.css?v={ver("assets/css/beta.css")}">\n')
+    page += header('ride') + f'''<main id="main" class="beta">
+<section class="beta-hero"><div class="wrap">
+  <div class="beta-intro">
+    <a class="beta-app" href="/easy2ride/"><img src="{a["icon"]}" alt="" width="56" height="56"><span><b>車伴</b><small>Easy2Ride 封閉測試</small></span></a>
+    <h1>正式上路前，<br>先陪我們騎一段。</h1>
+    <p class="lead">車伴是給騎士的機車管家：保養和加油自動記帳、證件到期提醒、記停車、記錄騎乘路線，騎完還能做成空拍般的旅程重播。上架前，我們想先請騎車的朋友用用看。</p>
+    <div class="beta-facts">
+      <div><b>2 分鐘</b><span>加入測試</span></div>
+      <div><b>14 天</b><span>請你留著 App</span></div>
+      <div><b>NT$0</b><span>測試期間購買不扣款</span></div>
+    </div>
+  </div>
+  <div class="beta-shot" aria-hidden="true">{phone("/assets/img/apps/easy2ride-ride.webp", "", "android", lazy=False)}</div>
+</div></section>
+
+<section class="beta-route"><div class="wrap">
+  <div class="route-head">
+    <h2>你的手機是哪一種？</h2>
+    <div class="seg" role="tablist" aria-label="選擇手機系統">
+      <button type="button" role="tab" id="tab-ios" aria-controls="p-ios" aria-selected="true"><svg aria-hidden="true"><use href="#i-apple"/></svg>iPhone</button>
+      <button type="button" role="tab" id="tab-android" aria-controls="p-android" aria-selected="false"><svg aria-hidden="true"><use href="#i-play"/></svg>Android</button>
+    </div>
+  </div>
+  <div class="panel" id="p-ios" role="tabpanel" aria-labelledby="tab-ios">
+    <p class="need">需要 iOS 15.5 以上的 iPhone，和你平常用的 Apple 帳號。</p>
+    <ol class="road">{ios}<li class="finish"><span class="mile" aria-hidden="true"></span><div><h3>完成，開始用車伴</h3><p>不登入也能用車庫和騎乘紀錄；要揪團或加入車隊再登入就好。</p></div></li></ol>
+  </div>
+  <div class="panel" id="p-android" role="tabpanel" aria-labelledby="tab-android">
+    <p class="need">需要 Android 7.0 以上的手機，和一個 Google 帳號。加入群組、成為測試人員、安裝 App，三個步驟都要用<strong>同一個</strong> Google 帳號。</p>
+    <ol class="road">{android}<li class="finish"><span class="mile" aria-hidden="true"></span><div><h3>完成，開始用車伴</h3><p>不登入也能用車庫和騎乘紀錄；要揪團或加入車隊再登入就好。</p></div></li></ol>
+  </div>
+  <p class="note">如果連結說 App 還不能用，通常是剛加入、還在生效中，請過幾分鐘再試。</p>
+</div></section>
+
+<section class="beta-notes"><div class="wrap">
+  <article class="n-days">
+    <h2>請陪我們騎滿 14 天</h2>
+    <p>Google Play 規定，新 App 要有測試者連續使用 14 天才能正式上架。這段時間請留著車伴、不要退出測試，偶爾打開記一筆加油、騎一趟就很夠了。</p>
+    <div class="odo" aria-hidden="true">{"".join(f"<i>{d}</i>" for d in range(1, 15))}</div>
+  </article>
+  <article>
+    <h2>測試期間買 Plus 不會扣款</h2>
+    <p>在 App 裡訂閱或買斷車伴 Plus，都是商店的測試交易：iPhone 會顯示「沙盒環境」，Android 付款畫面會標示「測試」，不會真的收錢。</p>
+  </article>
+  <article>
+    <h2>遇到問題，直接告訴我們</h2>
+    <p>任何卡住、看不懂、想要的功能，都歡迎寫信到 <a href="mailto:{EMAIL}">{EMAIL}</a>。iPhone 也可以在 TestFlight 裡截圖回報。</p>
+  </article>
+  <article>
+    <h2>你的資料</h2>
+    <p>加入 Google 群組時，只有開發者看得到你的 Google 帳號信箱，名單不公開。車伴怎麼處理資料，請看<a href="{a["privacy"]}">隱私權政策</a>。</p>
+  </article>
+</div></section>
+</main>
+<script>
+(function(){{
+  var tabs=[].slice.call(document.querySelectorAll('.seg [role=tab]'));
+  function pick(id,focus){{
+    tabs.forEach(function(t){{var on=t.id===id;t.setAttribute('aria-selected',on);t.tabIndex=on?0:-1;document.getElementById(t.getAttribute('aria-controls')).hidden=!on;if(on&&focus)t.focus()}});
+    try{{localStorage.setItem('beta-os',id)}}catch(e){{}}
+  }}
+  var start='tab-ios';
+  try{{start=localStorage.getItem('beta-os')||(/android/i.test(navigator.userAgent)?'tab-android':'tab-ios')}}catch(e){{}}
+  pick(start);
+  tabs.forEach(function(t,i){{
+    t.addEventListener('click',function(){{pick(t.id)}});
+    t.addEventListener('keydown',function(ev){{if(ev.key==='ArrowRight'||ev.key==='ArrowLeft'){{ev.preventDefault();pick(tabs[(i+1)%2].id,true)}}}});
+  }});
+}})();
+</script>
+''' + footer()
+    write('easy2ride/beta/index.html', page)
+
 def build_404():
     page = head('找不到這個頁面｜easy2live', '找不到這個頁面。', '/404.html')
     page += header() + '''<main id="main" class="wrap"><section class="notfound">
@@ -466,7 +574,7 @@ def build_404():
     write('404.html', page)
 
 def build_meta():
-    urls = ['/', '/easy2baby/', '/easy2ride/', '/easy2delivery/', '/easy2delivery/privacy.html', '/easy2delivery/feedback.html', '/design/']
+    urls = ['/', '/easy2baby/', '/easy2ride/', '/easy2ride/beta/', '/easy2delivery/', '/easy2delivery/privacy.html', '/easy2delivery/feedback.html', '/design/']
     sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + ''.join(f'  <url><loc>{SITE}{u}</loc></url>\n' for u in urls) + '</urlset>\n'
     write('sitemap.xml', sm)
     write('robots.txt', f'User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml\n')
@@ -477,6 +585,7 @@ if __name__ == '__main__':
         build_app(k)
     build_delivery_docs()
     build_gallery('design')
+    build_beta()
     build_404()
     build_meta()
     print('done')

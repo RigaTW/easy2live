@@ -1,0 +1,79 @@
+/* 車伴封閉測試招募頁：路面、標線、里程碑 */
+.beta{--asphalt:#1E2725;--asphalt-2:#26302E;--lane:#F2B705;--paper:var(--bg)}
+.beta h1,.beta h2,.beta h3{letter-spacing:-.01em}
+
+/* 開頭 */
+.beta-hero{background:linear-gradient(180deg,var(--ride-bg),var(--bg));padding:56px 0 72px;overflow:hidden}
+.beta-hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:64px;align-items:center}
+.beta-app{display:inline-flex;align-items:center;gap:12px;margin-bottom:28px}
+.beta-app img{width:56px;height:56px;border-radius:14px;box-shadow:0 6px 18px rgba(10,79,70,.18)}
+.beta-app b{display:block;font-size:17px;line-height:1.2}
+.beta-app small{display:block;color:var(--sub);font-size:13px}
+.beta-hero h1{font-size:clamp(34px,5.2vw,56px);line-height:1.18;margin:0 0 20px;font-weight:800}
+.beta-hero .lead{font-size:17px;color:var(--sub);max-width:34em;margin:0 0 32px}
+.beta-facts{display:flex;gap:0;border-top:1px solid var(--line);max-width:560px}
+.beta-facts div{flex:1;padding:16px 16px 0 0}
+.beta-facts div+div{padding-left:16px;border-left:1px solid var(--line)}
+.beta-facts b{display:block;font-family:var(--latin);font-size:26px;line-height:1.2;color:var(--ride-ink)}
+.beta-facts span{font-size:13.5px;color:var(--sub)}
+.beta-shot .phone{transform:rotate(4deg);margin:0 auto;max-width:280px}
+
+/* 路線：深色柏油路＋黃色中線，步驟是路上的里程碑 */
+.beta-route{background:var(--asphalt);color:#EEF2F0;padding:72px 0 64px;position:relative}
+.beta-route::before{content:"";position:absolute;inset:0 0 auto;height:6px;background:repeating-linear-gradient(90deg,var(--lane) 0 46px,transparent 46px 78px);opacity:.9}
+.route-head{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:28px}
+.route-head h2{margin:0;font-size:clamp(24px,3.4vw,32px)}
+.seg{display:inline-flex;background:var(--asphalt-2);border-radius:99px;padding:5px;gap:4px;border:1px solid rgba(255,255,255,.08)}
+.seg button{display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 20px;border:0;border-radius:99px;background:transparent;color:#B9C4C0;font:700 15px var(--sans);cursor:pointer}
+.seg button svg{width:17px;height:17px;fill:currentColor}
+.seg button[aria-selected="true"]{background:#fff;color:#14201D}
+.seg button:focus-visible{outline:2px solid var(--lane);outline-offset:2px}
+.beta-route .need{color:#B9C4C0;margin:0 0 28px;max-width:44em}
+.beta-route .need strong{color:var(--lane)}
+.road{list-style:none;margin:0;padding:0;position:relative;max-width:760px}
+.road::before{content:"";position:absolute;left:23px;top:10px;bottom:34px;width:2px;background:repeating-linear-gradient(180deg,var(--lane) 0 16px,transparent 16px 30px)}
+.road li{display:grid;grid-template-columns:48px minmax(0,1fr);gap:22px;padding-bottom:36px;position:relative}
+.road li:last-child{padding-bottom:0}
+.mile{width:48px;height:48px;border-radius:50%;background:var(--asphalt);border:2px solid var(--lane);color:var(--lane);display:grid;place-items:center;font:800 19px var(--latin);position:relative;z-index:1}
+.road h3{margin:8px 0 4px;font-size:19px}
+.road p{margin:0 0 14px;color:#B9C4C0}
+.road .btn{gap:6px}
+.road .btn svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round}
+.road .btn.primary{background:var(--lane);color:#1A1600}
+.road .btn.ghost{background:rgba(255,255,255,.1);color:#fff}
+.road .btn.wait{background:transparent;color:#8E9A96;border:1px dashed #56625F;cursor:default;filter:none}
+.road .finish .mile{background:repeating-conic-gradient(#fff 0 25%,#1E2725 0 50%) 0 0/16px 16px;border-color:#fff}
+.road .finish h3{color:#fff}
+.beta-route .note{margin:40px 0 0;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);color:#8E9A96;font-size:14px}
+.panel[hidden]{display:none}
+
+/* 須知 */
+.beta-notes{padding:72px 0 88px}
+.beta-notes .wrap{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 56px}
+.beta-notes article{padding:28px 0;border-top:1px solid var(--line)}
+.beta-notes h2{font-size:20px;margin:0 0 8px}
+.beta-notes p{margin:0;color:var(--sub);max-width:36em}
+.beta-notes a{color:var(--ride-ink);text-decoration:underline;text-underline-offset:3px}
+.beta-notes .n-days{grid-column:1/-1;border-top:0;padding-top:0}
+.beta-notes .n-days h2{font-size:clamp(24px,3.4vw,32px)}
+.odo{display:grid;grid-template-columns:repeat(14,minmax(0,1fr));gap:6px;margin-top:22px;max-width:760px}
+.odo i{font:700 13px var(--latin);font-style:normal;text-align:center;padding:10px 0;border-radius:8px;background:var(--ride-bg);color:var(--ride-ink)}
+.odo i:last-child{background:var(--ride);color:#fff}
+
+@media (max-width:860px){
+  .beta-hero{padding:32px 0 48px}
+  .beta-hero .wrap{grid-template-columns:minmax(0,1fr)}
+  .beta-shot{display:none}
+  .beta-notes .wrap{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:520px){
+  .beta-facts b{font-size:21px}
+  .beta-facts div{padding-right:10px}
+  .beta-facts div+div{padding-left:10px}
+  .route-head{flex-direction:column;align-items:flex-start}
+  .road li{grid-template-columns:40px minmax(0,1fr);gap:16px}
+  .mile{width:40px;height:40px;font-size:16px}
+  .road::before{left:19px}
+  .road .btn{white-space:normal;height:auto;min-height:46px;padding:10px 20px;text-align:left}
+  .odo{grid-template-columns:repeat(7,minmax(0,1fr))}
+}
